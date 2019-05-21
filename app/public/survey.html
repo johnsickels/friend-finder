@@ -174,9 +174,8 @@
             ]
         };
 
-        console.log(newFriend);
-
         $.post("/api/friends", newFriend, function(data) {
+            
             if (data) {
                 alert("Survey results recieved!");
             };
