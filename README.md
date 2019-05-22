@@ -28,6 +28,8 @@ I will use Express to handle routing. I will deploy the app to Heroku so other u
 
 ## Friend Finder Links:
 
-![FriendFinder](Images/friendfinder.gif)
+[FriendFinder](https://friend-finder-sickels.herokuapp.com/)
+
+![FriendFinder](images/user-interface.png)
 
 
