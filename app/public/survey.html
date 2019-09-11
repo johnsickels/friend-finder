@@ -13,19 +13,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
     <style>
-    #match-photo {
-        width: 400px
-    }
-    h1, h2 {
-        margin: 20px 0 10px 0;
-        font-weight: bolder;
-    }
-    h3 {
-        margin: 10 0;
-    }
-    button {
-        margin: 20px 0;
-    }
+        #match-photo {
+            width: 400px
+        }
+
+        h1,
+        h2 {
+            margin: 20px 0 10px 0;
+            font-weight: bolder;
+        }
+
+        h3 {
+            margin: 10 0;
+        }
+
+        button {
+            margin: 20px 0;
+        }
     </style>
 
     <title>Friend Finder</title>
@@ -203,21 +207,39 @@
     $("#submit").on("click", function (event) {
         event.preventDefault();
 
-        var newFriend = {
-            name: $("#name").val().trim(),
-            photo: $("#photo").val().trim(),
-            scores: [
-                parseInt($("#q1").val()),
-                parseInt($("#q2").val()),
-                parseInt($("#q3").val()),
-                parseInt($("#q4").val()),
-                parseInt($("#q5").val()),
-                parseInt($("#q6").val()),
-                parseInt($("#q7").val()),
-                parseInt($("#q8").val()),
-                parseInt($("#q9").val()),
-                parseInt($("#q10").val())
-            ]
+        function validateForm() {
+            var isValid = true;
+            $(".form-control").each(function () {
+                if ($(this).val() === "") {
+                    isValid = false;
+                }
+            });
+
+            $(".chosen-select").each(function () {
+
+                if ($(this).val() === "") {
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+        if (validateForm()) {
+            var newFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: [
+                    parseInt($("#q1").val()),
+                    parseInt($("#q2").val()),
+                    parseInt($("#q3").val()),
+                    parseInt($("#q4").val()),
+                    parseInt($("#q5").val()),
+                    parseInt($("#q6").val()),
+                    parseInt($("#q7").val()),
+                    parseInt($("#q8").val()),
+                    parseInt($("#q9").val()),
+                    parseInt($("#q10").val())
+                ]
+            };
         };
 
         $.post("/api/friends", newFriend, function (data) {
